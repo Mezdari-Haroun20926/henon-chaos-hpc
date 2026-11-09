@@ -1,0 +1,19 @@
+# Fichiers binaires compilés et exécutables
+bin/
+*.o
+*.out
+
+# Données de simulation brutes (générées)
+data/*.bin
+data/*.csv
+
+# Fichiers temporaires ou d'IDE
+.vscode/
+.DS_Store
+*.swp
+
+# Fichiers auxiliaires LaTeX (si tu rédiges ton rapport dans docs/)
+docs/*.aux
+docs/*.log
+docs/*.toc
+docs/*.pdf
