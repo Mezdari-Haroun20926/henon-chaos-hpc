@@ -1,22 +1,15 @@
 #include "henon_solver.h"
 
 int main(int argc, char *argv[]) {
-    int n = 1000000;
-    if (argc > 1) {
-        n = atoi(argv[1]);
-    }
+    int n = 1000000; // 1 million de points suffisent pour ces visualisations
+    
+    printf("[HPC Engine] Generation des 4 regimes de Henon...\n");
+    
+    run_henon_simulation(n, 1.4, 0.3, 0.1, 0.1, "data/henon_1.4_0.3.bin");
+    run_henon_simulation(n, 1.3, 0.3, 0.1, 0.1, "data/henon_1.3_0.3.bin");
+    run_henon_simulation(n, 1.0, 0.3, 0.1, 0.1, "data/henon_1.0_0.3.bin");
+    run_henon_simulation(n, 0.2, 0.3, 0.1, 0.1, "data/henon_0.2_0.3.bin");
 
-    const char *outpath_attractor = "data/henon_points.bin";
-    const char *outpath_divergence = "data/henon_divergence.bin";
-
-    printf("[HPC Engine] 1. Simulation de l'attracteur (N = %d)...\n", n);
-    run_henon_simulation(n, 0.1, 0.1, outpath_attractor);
-
-    int n_div = 100;
-    double epsilon = 1e-12;
-    printf("[HPC Engine] 2. Sensibilite aux conditions initiales (N = %d, eps = %e)...\n", n_div, epsilon);
-    run_henon_divergence(n_div, 0.1, 0.1, epsilon, outpath_divergence);
-
-    printf("[HPC Engine] Termine. Fichiers generes dans data/\n");
+    printf("[HPC Engine] Fichiers binaires generes avec succes.\n");
     return 0;
 }
